@@ -1,0 +1,149 @@
+.index {
+
+    // 主体区域
+    .main-container {
+        min-height: 100%;
+        transition: margin-left .28s;
+        margin-left: 210px;
+    }
+
+    // 侧边栏
+    .sidebar-container {
+        transition: width 0.28s;
+        width: 210px !important;
+        height: 100%;
+        position: fixed;
+        font-size: 0px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1001;
+        overflow: hidden; //reset element-ui css
+
+        .scrollbar-wrapper {
+            height: calc(100% + 17px);
+
+            .el-scrollbar__view {
+                height: 100%;
+            }
+        }
+
+        .is-horizontal {
+            display: none;
+        }
+
+        .svg-icon {
+            margin-right: 16px;
+        }
+
+        .el-menu {
+            border: none;
+            height: calc(100% - 60px);
+            width: 100% !important;
+        }
+
+        .el-menu-item i,
+        .el-submenu__title i {
+            color: inherit;
+        }
+    }
+
+    .el-menu--collapse .el-menu .el-submenu {
+        min-width: 180px !important;
+    }
+
+    .el-submenu__title,
+    .el-menu-item {
+        text-align: left;
+    }
+}
+
+// 子项颜色
+.nest-menu .el-submenu>.el-submenu__title,
+.el-menu--vertical .el-menu .el-menu-item,
+.sidebar-container .el-submenu .el-menu-item {
+    min-width: 180px !important;
+    background-color: $sideItemBgc !important;
+}
+
+// hover
+.el-submenu .el-menu-item:hover,
+.el-menu-vertical>.el-menu-item:hover,
+.el-menu--vertical .el-menu .el-menu-item:hover,
+.el-submenu__title:hover {
+    background-color: $activeBgc !important;
+}
+
+// 获得焦点
+.el-submenu .el-menu-item.is-active,
+.el-menu--vertical .el-menu .el-menu-item.is-active,
+.el-menu-vertical>.el-menu-item.is-active {
+    position: relative;
+    color: $color !important;
+    background-color: $activeBgc !important;
+}
+
+// 点击
+.el-submenu .el-menu-item.is-active::after,
+.el-menu--vertical .el-menu .el-menu-item.is-active::after,
+.el-menu-vertical>.el-menu-item.is-active::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background-color: $color;
+}
+
+.hideSidebar {
+    .sidebar-container {
+        width: 36px !important;
+        overflow: hidden;
+    }
+
+    .main-container {
+        overflow: hidden;
+        margin-left: 36px;
+    }
+
+    .el-menu-item {
+        padding: 0 18px !important;
+    }
+
+    .el-menu-item .el-tooltip {
+        padding-left: 7px !important;
+    }
+
+    .submenu-title-noDropdown {
+        padding-left: 7px !important;
+        position: relative;
+    }
+
+    .el-submenu {
+        overflow: hidden;
+
+        &>.el-submenu__title {
+            padding-left: 7px !important;
+
+            .el-submenu__icon-arrow {
+                display: none;
+            }
+        }
+    }
+
+    .el-menu--collapse {
+        .el-submenu {
+            &>.el-submenu__title {
+                &>span {
+                    height: 0;
+                    width: 0;
+                    overflow: hidden;
+                    visibility: hidden;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
